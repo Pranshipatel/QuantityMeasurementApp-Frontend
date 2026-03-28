@@ -1,0 +1,211 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #9b2335;
+  --red-dark: #7a1a28;
+  --red-light: #c0394d;
+  --text: #1a1a1a;
+  --muted: #888;
+  --border: #ddd;
+  --bg: #f4f4f4;
+  --card: #fff;
+  --radius: 10px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 32px rgba(0,0,0,.12);
+  width: 360px;
+  overflow: hidden;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.tab {
+  flex: 1;
+  padding: 18px 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  cursor: pointer;
+  color: var(--muted);
+  background: none;
+  border: none;
+  position: relative;
+  text-transform: uppercase;
+  transition: color .25s;
+}
+.tab.active {
+  color: var(--text);
+}
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 3px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+/* ── PANELS ── */
+
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(150, 147, 147, 0);
+}
+.panels {
+  position: relative;
+  overflow: hidden;
+  
+}
+.panel {
+  padding: 28px 28px 32px;
+  display: none;
+  animation: fadeIn .3s ease;
+}
+.panel.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── FIELDS ── */
+.field { margin-bottom: 20px; }
+.field label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 7px;
+}
+.field input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+  background: #fff;
+}
+.field input:focus {
+  border-color: var(--red);
+}
+
+/* password wrapper */
+.pw-wrap { position: relative; }
+.pw-wrap input { padding-right: 44px; }
+.eye-btn {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.eye-btn svg { width: 20px; height: 20px; }
+
+/* ── FORGOT ── */
+.forgot {
+  text-align: right;
+  margin-top: -12px;
+  margin-bottom: 22px;
+}
+.forgot a {
+  font-size: 12.5px;
+  color: var(--red);
+  text-decoration: none;
+}
+.forgot a:hover { text-decoration: underline; }
+
+/* ── BUTTON ── */
+.btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: .3px;
+  transition: background .2s, transform .1s;
+}
+.btn:hover  { background: var(--red-dark); }
+.btn:active { transform: scale(.98); }
+
+/* ── HOME PAGE ── */
+#home {
+  display: none;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  padding: 40px 20px;
+}
+#home.show { display: flex; }
+.home-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-icon svg { width: 36px; height: 36px; fill: #fff; }
+#home h1 { font-size: 28px; font-weight: 700; color: var(--text); }
+#home p  { font-size: 15px; color: var(--muted); max-width: 300px; }
+.logout-btn {
+  margin-top: 8px;
+  padding: 12px 32px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .2s;
+}
+.logout-btn:hover { background: var(--red-dark); }
+
+/* welcome name */
+#welcome-name { color: var(--red); }
