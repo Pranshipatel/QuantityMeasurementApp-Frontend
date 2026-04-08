@@ -1,0 +1,107 @@
+<div class="auth-page">
+
+  <div class="auth-wrapper">
+
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <div class="left-inner">
+        <img src="https://r2.cdn.yaclass.in/be2bedce-80e9-42ec-8ca2-0308305b9d55/shutterstock147806882w350.jpg" alt="logo" class="brand-img">
+        <h3 class="brand-title">Quantity Measurement App</h3>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="auth-right">
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-btn" [class.active]="activeTab === 'login'" (click)="switchTab('login')">LOGIN</button>
+        <button class="tab-btn" [class.active]="activeTab === 'signup'" (click)="switchTab('signup')">SIGNUP</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form *ngIf="activeTab === 'login'" [formGroup]="loginForm" (ngSubmit)="onLogin()" class="auth-form" novalidate>
+
+        <div class="form-group">
+          <label>Email Id</label>
+          <input type="email" formControlName="email" placeholder="you@example.com">
+          <span class="field-error" *ngIf="lf['email'].invalid && lf['email'].touched">
+            Enter a valid email
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="pw-wrap">
+            <input [type]="showLoginPw ? 'text' : 'password'" formControlName="password" placeholder="••••••••">
+            <span class="eye-btn" (click)="showLoginPw = !showLoginPw">
+              {{ showLoginPw ? '🙈' : '👁' }}
+            </span>
+          </div>
+          <span class="field-error" *ngIf="lf['password'].invalid && lf['password'].touched">
+            Password is required
+          </span>
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="loginLoading">
+          {{ loginLoading ? 'Logging in...' : 'Login' }}
+        </button>
+
+        <p class="form-msg" [class.success]="loginMsgType === 'success'" [class.error]="loginMsgType === 'error'">
+          {{ loginMsg }}
+        </p>
+
+      </form>
+
+      <!-- SIGNUP FORM -->
+      <form *ngIf="activeTab === 'signup'" [formGroup]="signupForm" (ngSubmit)="onSignup()" class="auth-form" novalidate>
+
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" formControlName="name" placeholder="Jane Doe">
+          <span class="field-error" *ngIf="sf['name'].invalid && sf['name'].touched">
+            Name must be 2–50 characters
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label>Email Id</label>
+          <input type="email" formControlName="email" placeholder="you@example.com">
+          <span class="field-error" *ngIf="sf['email'].invalid && sf['email'].touched">
+            Enter a valid email
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="pw-wrap">
+            <input [type]="showSignupPw ? 'text' : 'password'" formControlName="password" placeholder="Min 8 chars">
+            <span class="eye-btn" (click)="showSignupPw = !showSignupPw">
+              {{ showSignupPw ? '🙈' : '👁' }}
+            </span>
+          </div>
+          <span class="field-error" *ngIf="sf['password'].invalid && sf['password'].touched">
+            Must have 1 uppercase, 1 lowercase, 1 digit, 1 special char, 8–15 chars
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label>Mobile Number <span class="optional">(optional)</span></label>
+          <input type="tel" placeholder="9876543210">
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="signupLoading">
+          {{ signupLoading ? 'Creating account...' : 'Signup' }}
+        </button>
+
+        <p class="form-msg" [class.success]="signupMsgType === 'success'" [class.error]="signupMsgType === 'error'">
+          {{ signupMsg }}
+        </p>
+
+      </form>
+
+    </div><!-- /auth-right -->
+
+  </div>
+
+</div>

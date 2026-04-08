@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+
+# Build / output
+dist/
+tmp/
+out-tsc/
+*.tsbuildinfo
+
+# Angular CLI cache
+.angular/
+
+# Logs & debug
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Test / coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Environment (secrets — keep example files if you use them)
+.env
+.env.*
+!.env.example
+
+# IDE & editors
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Optional tooling
+.eslintcache
+.stylelintcache
+*.pem
+.vercel
+.netlify
